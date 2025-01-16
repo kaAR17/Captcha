@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captcha Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            background-color: crimson;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .container {
+            background-color: white;
+            border: solid black 1px;
+            width: fit-content;
+            border-radius: 5px;
+            margin-left: 35%;
+            margin-top: 10%;
+            padding: 30px;
+        }
+
+        .head {
+            font-size: 24px;
+            font-weight: bold;
+            justify-content: center;
+            align-content: center;
+            
+        }
+        .captchaBox{
+
+            width: 100%;
+            display:flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom:15px;
+            position:relative;
+        }
+
+        .captchaBox input{
+            width:100%;
+            padding: 10px;
+            border-radius:5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            background: #e9ecef;
+            color:#495057;
+            font-weight: bold;
+            
+    
+        }
+        .reload{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position:absolute;
+            right: 1px;
+            
+            transition: 0.5s;
+            cursor:pointer;
+            background-color: #4CAF50;
+            padding:0.4em;
+            border-radius: 8px;
+        }
+        .reload ion-icon{
+            padding: 2px;
+            font-size: 18px;
+            color: #fff;
+        }
+        .entering{
+            margin-bottom: 15px;
+        }
+
+        .entering input{
+            width:95%;
+            padding: 10px;
+            outline:none;
+            border-radius:5px;
+            border: 1px solid  #4CAF50;
+            font-size: 16px;
+           
+        }
+
+        .btn {
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+       
+        
+        
+
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="head">
+            <h1>Captcha Generator</h1>
+        </div>
+
+        <!-- Display CAPTCHA value -->
+        <div class="captchaBox">
+            <input type="text" id="captchaText" value="" >
+        
+            <div class="reload">
+            <ion-icon name="reload-outline"></ion-icon></div>
+        </div>
+            
+       
+
+        <!-- User input field for CAPTCHA -->
+        <div class="entering">
+            <input type="text" id="userInput" placeholder="Enter Captcha" >
+        </div>
+
+        <!-- Button to submit the CAPTCHA -->
+        <div class="btn">
+            <button id="submit">Submit Captcha</button>
+        </div>
+    </div>
+
+    <script>
+        const generatedCaptchaInput=document.getElementById("captchaText")
+        const reloadCaptcha=document.querySelector(".reload")
+        const  userCaptchaInput=document.getElementById("userInput")
+        const  submitCaptcha=document.getElementById("submit")
+         function generatedCaptcha()
+        {
+              const characters='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+              let captcha='';
+              for(let i=0;i<6;i++){
+             captcha += characters.charAt(Math.floor(Math.random()*characters.length)) +' '
+             }
+              return captcha.trim();
+
+        }
+        
+        function validateCaptcha()
+        {
+            const generatedCaptcha=generatedCaptchaInput.value.replace(/\s+/g,'');
+            const userCaptcha=userCaptchaInput.value.replace(/\s+/g,'');
+            if(generatedCaptcha === userCaptcha){
+            alert('captcha generated successfully')
+            }
+            else{
+            alert('captcha generated not as search')
+            }
+        }
+        function setCaptcha(){
+                generatedCaptchaInput.value=generatedCaptcha();
+            }
+            
+            setCaptcha();
+            
+
+             reloadCaptcha.addEventListener('click', setCaptcha);
+             submitCaptcha.addEventListener('click',validateCaptcha);
+            
+            
+            
+        
+
+
+        
+       
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+</body>
+
+</html>
