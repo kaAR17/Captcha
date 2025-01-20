@@ -107,6 +107,96 @@
         button:hover {
             background-color: #45a049;
         }
+        /* Basic styles remain as they are */
+
+body {
+    background-color: crimson;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.container {
+    background-color: white;
+    border: solid black 1px;
+    width: fit-content;
+    border-radius: 5px;
+    margin-left: 35%;
+    margin-top: 10%;
+    padding: 30px;
+}
+
+/* Media Query for screens smaller than 600px (typically mobile) */
+@media screen and (max-width: 600px) {
+    .container {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 5%;
+        padding: 15px;
+    }
+
+    .head h1 {
+        font-size: 20px;
+    }
+
+    .captchaBox input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .entering input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    /* Reload button styling */
+    .reload {
+        padding: 0.3em;
+        font-size: 16px;
+    }
+
+    /* Adjust the text field width to fit mobile screens */
+    .captchaBox input {
+        width: 85%;
+    }
+}
+
+/* Media Query for screens larger than 600px (tablet and desktop) */
+@media screen and (min-width: 601px) {
+    .container {
+        width: fit-content;
+        margin-left: 35%;
+        margin-top: 10%;
+        padding: 30px;
+    }
+
+    .head h1 {
+        font-size: 24px;
+    }
+
+    .captchaBox input {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .entering input {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    
+}
+
     </style>
 </head>
 
